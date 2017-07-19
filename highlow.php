@@ -2,8 +2,9 @@
 
 	$compNumber = mt_rand(1, 100);
 	$guesses = 1;
+	
 
-	echo $compNumber . PHP_EOL;
+	 echo $compNumber . PHP_EOL;
 
 	do {
 
@@ -14,7 +15,11 @@
 		if (!is_numeric($userInput) ){
 			echo "Please enter a valid number." . PHP_EOL;
 
-		} elseif ($userInput < $compNumber){
+		}elseif ($guesses === 6) {
+			echo "Game over! Too many guesses!" . PHP_EOL;
+			break;
+
+		}  elseif ($userInput < $compNumber){
 			echo "Higher" . PHP_EOL;
 			$guesses++;
 
@@ -26,7 +31,7 @@
 			echo "Good Guess! You Win!" . PHP_EOL;
 			echo "Number of guesses: {$guesses}"  . PHP_EOL;
 		}
-	} while ($userInput != $compNumber);
+	} while ($userInput != $compNumber && $guesses < 7 );
 
 
 
