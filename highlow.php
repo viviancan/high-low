@@ -17,22 +17,29 @@
 
 
 $compNumber = rand(1, 100);
+$guesses = 0;
 
 echo $compNumber . PHP_EOL;
 
-fwrite(STDOUT, 'Guess ');
+do {
 
-$userInput = trim(fgets(STDIN));
+	fwrite(STDOUT, 'Guess ');
 
-if ($userInput < $compNumber){
-	echo "Higher" . PHP_EOL;
+	$userInput = trim(fgets(STDIN));
 
-} elseif ($userInput > $compNumber) {
-	echo "Lower" . PHP_EOL;
+	if ($userInput < $compNumber){
+		echo "Higher" . PHP_EOL;
+		$guesses++;
 
-} else {
-	echo "Good Guess! You Win!" . PHP_EOL;
-}
+	} elseif ($userInput > $compNumber) {
+		echo "Lower" . PHP_EOL;
+		$guesses++;
+
+	} else {
+		echo "Good Guess! You Win!" . PHP_EOL;
+		echo "Number of guesses: {$guesses}"  . PHP_EOL;
+	}
+} while ($userInput != $compNumber);
 
 
 
