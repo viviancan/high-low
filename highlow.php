@@ -35,12 +35,18 @@
 	// } while ($guesses <= 7 && $userInput != $compNumber  );
 
 
+	if($argc !== 3){
+		echo 'pleae pass the minimum and maximum for the game' . PHP_EOL;
+		echo PHP_EOL;
+		echo 'Usage: ' . PHP_EOL;
+		echo '     php high_low.php <min> <max>' . PHP_EOL; 
+		exit; 
+	}
 
+	$min = $argv[1];
+	$max = $argv[2];
 
-
-
-
-	$compNumber = mt_rand($argv[1], $argv[2]);
+	$compNumber = mt_rand($min, $max);
 	$guesses = 0;
 	
 
